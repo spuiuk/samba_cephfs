@@ -1,0 +1,26 @@
+#Version: 0.0.1
+ENV	REFRESHED_AT 2024-01-22-1
+FROM	quay.io/spuiuk/cephfs_dev:latest
+
+RUN	dnf config-manager --enable powertools
+RUN 	dnf install -y glibc-langpack-en iputils iproute iptables vim autofs rsync psmisc wget cifs-utils nfs-utils
+RUN	dnf install -y git gdb gcc perl automake autoconf libtool flex bison strace
+RUN	dnf install -y python3.11 python3.11-devel python3-tdb python3-tevent
+RUN	dnf install -y openssl-devel libxml2-devel libaio-devel libibverbs-devel librdmacm-devel readline-devel glib2-devel libacl-devel sqlite-devel fuse-devel cups-devel dbus-devel docbook-style-xsl libcap-devel libldb-devel libtalloc-devel libtdb-devel libtevent-devel libxslt openldap-devel pam-devel perl-ExtUtils-MakeMaker perl-Parse-Yapp perl-Test-Simple popt-devel gnutls-devel libtirpc libtirpc-devel jansson-devel lvm2-devel userspace-rcu-devel libcmocka-devel libarchive-devel quota-devel libnsl2-devel rpcgen libcephfs-devel
+
+RUN	dnf install -y samba samba-client
+RUN	ln -sf /workspaces/samba_cephfs/bin /root/bin
+
+RUN	useradd test1; (echo x; echo x)|smbpasswd -a test1
+RUN	useradd test2; (echo x; echo x)|smbpasswd -a test2
+
+RUN	mkdir /local; chmod 777 /local
+
+COPY	smb.conf /etc/samba/smb.conf
+
+# Samba databases created.
+# Now remove samba rpm packages
+RUN	dnf remove -y samba
+
+RUN	ln -s /workspaces/samba_cephfs /root/samba_cephfs
+RUN	ln -s /workspaces/samba_cephfs/samba /root/samba

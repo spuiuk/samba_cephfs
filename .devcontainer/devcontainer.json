@@ -1,0 +1,19 @@
+{
+    "name": "samba_cephfs_dev",
+    "dockerFile": "Containerfile",
+    "forwardPorts": [],
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.shell.linux": "/bin/bash"
+            },
+            "extensions": [
+		"ms-vscode.cpptools",
+                "ms-python.python",
+                "ms-vscode.js-debug"
+            ]
+        }
+    },
+    "runArgs": [ "--privileged", "--rm" ],
+    "remoteUser": "root"
+}

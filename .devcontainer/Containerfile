@@ -1,0 +1,1 @@
+FROM samba_cephfs_dev

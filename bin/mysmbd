@@ -1,0 +1,14 @@
+if rpm -q samba >/dev/null
+then
+	dnf remove -y samba
+fi
+
+if ! mount |grep ^ceph-fuse
+then
+	/cephfs_start.sh
+fi
+
+mymake
+myinstall
+
+smbd -F --debug-stdout --no-process-group
