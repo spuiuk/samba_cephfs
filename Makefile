@@ -7,3 +7,7 @@ run:
 
 exec:
 	podman exec -it samba_cepfs_dev /bin/bash
+
+clonerepo:
+	git clone https://github.com/samba-in-kubernetes/sit-test-cases.git
+	cp -f others/test-info.yml sit-test-cases/

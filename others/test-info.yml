@@ -1,0 +1,11 @@
+public_interfaces:
+  - "127.0.0.1"
+
+exported_sharenames:
+  - "cephfs-vfs"
+
+test_users:
+  - {"username": "test1", "password": "x"}
+  - {"username": "test2", "password": "x"}
+
+test_backend: cephfs
