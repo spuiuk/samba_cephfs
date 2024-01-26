@@ -11,3 +11,6 @@ exec:
 clonerepo:
 	git clone https://github.com/samba-in-kubernetes/sit-test-cases.git
 	cp -f others/test-info.yml sit-test-cases/
+
+test:
+	podman exec samba_cepfs_dev make -C /root/samba_cephfs/sit-test-cases test-nonprivileged
