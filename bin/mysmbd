@@ -5,7 +5,11 @@ fi
 
 if ! mount |grep ^ceph-fuse
 then
-	/cephfs_start.sh
+	nohup /cephfs_start.sh &
+	while ! mount |grep ^ceph-fuse
+	do
+		sleep 5
+	done
 fi
 
 mymake
