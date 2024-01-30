@@ -15,6 +15,7 @@ RUN	ln -sf /workspaces/samba_cephfs/bin /root/bin
 
 RUN	useradd test1; (echo x; echo x)|smbpasswd -a test1
 RUN	useradd test2; (echo x; echo x)|smbpasswd -a test2
+RUN	groupadd sg; usermod -G sg test1
 
 RUN	mkdir /local; chmod 777 /local
 
