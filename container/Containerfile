@@ -27,3 +27,4 @@ RUN	dnf remove -y samba
 
 RUN	ln -s /workspaces/samba_cephfs /root/samba_cephfs
 RUN	ln -s /workspaces/samba_cephfs/samba /root/samba
+RUN	ln -s /workspaces/samba_cephfs/sit-test-cases /root/sit-test-cases
