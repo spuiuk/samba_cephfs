@@ -1,8 +1,12 @@
 public_interfaces:
   - "127.0.0.1"
 
-exported_sharenames:
-  - "cephfs-vfs"
+#exported_sharenames:
+#  - cephfs-fuse
+
+exported_shares:
+  - {"name": "cephfs-vfs", "directmnt": "/mnt-cephfs"}
+  - {"name": "cephfs-fuse", "directmnt": "/mnt-cephfs"}
 
 test_users:
   - {"username": "test1", "password": "x"}
