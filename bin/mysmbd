@@ -13,7 +13,4 @@ then
 	ceph-mds --id 'a'
 fi
 
-mymake
-myinstall
-
 smbd -F --debug-stdout --no-process-group
