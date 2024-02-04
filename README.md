@@ -34,7 +34,14 @@ Assuming the git repo has been cloned, this is my workflow
 ```
 $ make run
 ..
+# Run the configure script
 [root@b3a46bdf3f64 /]# myconfigure
+..
+# Run the make command
+[root@b3a46bdf3f64 /]# mymake
+..
+# Run the install command
+[root@b3a46bdf3f64 /]# myinstall
 ..
 [root@b3a46bdf3f64 /]# mysmbd
 ..
