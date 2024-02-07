@@ -13,4 +13,4 @@ then
 	ceph-mds --id 'a'
 fi
 
-smbd -F --debug-stdout --no-process-group
+smbd -F --debug-stdout --no-process-group |tee /var/log/samba/log
