@@ -13,4 +13,9 @@ then
 	ceph-mds --id 'a'
 fi
 
+if [ -a /workspaces/samba_cephfs/others/smb.conf ]
+then
+	cp -f /workspaces/samba_cephfs/others/smb.conf /etc/samba/smb.conf
+fi
+
 smbd -F --debug-stdout --no-process-group |tee /var/log/samba/log
