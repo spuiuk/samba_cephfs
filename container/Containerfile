@@ -1,6 +1,17 @@
 #Version: 0.0.1
-ENV	REFRESHED_AT 2024-01-22-1
-FROM	quay.io/spuiuk/cephfs_dev:latest
+ENV	REFRESHED_AT 2024-02-14-1
+FROM ceph/ceph:v18.2
+
+RUN	mkdir /etc/selinux/ && touch /etc/selinux/config
+RUN	dnf update -y
+RUN 	dnf install -y python-cephfs
+
+# Cephfs environment
+COPY 	micro-osd.sh /micro-osd.sh
+COPY 	--chmod=755 cephfs_start.sh /cephfs_start.sh
+COPY 	samples /samples
+
+# Samba dev environment below this line
 
 RUN	dnf config-manager --enable powertools
 RUN 	dnf install -y glibc-langpack-en iputils iproute iptables vim autofs rsync psmisc wget cifs-utils nfs-utils
