@@ -18,4 +18,9 @@ then
 	cp -f /workspaces/samba_cephfs/others/smb.conf /etc/samba/smb.conf
 fi
 
+if ! [ -a /usr/sbin/smbd ]
+then
+	myinstall
+fi
+
 smbd -F --debug-stdout --no-process-group |tee /var/log/samba/log
