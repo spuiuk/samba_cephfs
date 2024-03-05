@@ -1,8 +1,9 @@
 #Version: 0.0.1
-ENV	REFRESHED_AT 2024-02-14-1
+ENV	REFRESHED_AT 2024-03-06
 FROM ceph/ceph:v18.2
 
 RUN	mkdir /etc/selinux/ && touch /etc/selinux/config
+
 RUN	dnf update -y
 RUN 	dnf install -y python-cephfs
 
@@ -12,13 +13,14 @@ COPY 	--chmod=755 cephfs_start.sh /cephfs_start.sh
 COPY 	samples /samples
 
 # Samba dev environment below this line
-
+ENV	REFRESHED_AT 2024-03-05-1
 RUN	dnf config-manager --enable powertools
 RUN 	dnf install -y glibc-langpack-en iputils iproute iptables vim autofs rsync psmisc wget cifs-utils nfs-utils glibc-all-langpacks
 RUN	dnf install -y git gdb gcc perl automake autoconf libtool flex bison strace
 RUN	dnf install -y python3.11 python3.11-devel python3-tdb python3-tevent python3-pytest-runner
 RUN	dnf install -y python3.12 python3.12-pip
 RUN	pip3.12 install PyYAML iso8601 tox --ignore-installed
+RUN	ln -sf /usr/bin/python3 /usr/bin/python
 RUN	ln -s /usr/bin/pytest-3 /usr/local/bin/pytest
 RUN	dnf install -y openssl-devel libxml2-devel libaio-devel libibverbs-devel librdmacm-devel readline-devel glib2-devel libacl-devel sqlite-devel fuse-devel cups-devel dbus-devel docbook-style-xsl libcap-devel libldb-devel libtalloc-devel libtdb-devel libtevent-devel libxslt openldap-devel pam-devel perl-ExtUtils-MakeMaker perl-Parse-Yapp perl-Test-Simple popt-devel gnutls-devel libtirpc libtirpc-devel jansson-devel lvm2-devel userspace-rcu-devel libcmocka-devel libarchive-devel quota-devel libnsl2-devel rpcgen libcephfs-devel
 
