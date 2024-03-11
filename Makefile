@@ -13,7 +13,8 @@ exec:
 	podman exec -w /root -it samba_cepfs_dev /bin/bash
 
 clean:
-	podman kill samba_cepfs_dev && sudo podman rm samba_cepfs_dev
+	-podman kill samba_cepfs_dev
+	-podman rm samba_cepfs_dev
 
 imageclean:
 	podman rmi localhost/samba_cephfs_dev quay.io/spuiuk/samba_cephfs_dev quay.io/ceph/ceph --force
