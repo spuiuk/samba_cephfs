@@ -3,10 +3,8 @@ then
 	dnf remove -y samba
 fi
 
-if ! mount |grep ^ceph-fuse
-then
-	/cephfs_start.sh
-fi
+umount -fl /ceph-fuse
+/cephfs_start.sh
 
 if ! ps -fax|grep ceph-mds|grep -v grep
 then
