@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Pod
+metadata:
+  name: samba-cephfs
+  labels:
+    app: samba-cephfs
+spec:
+  volumes:
+    - name: config-volume
+      hostPath:
+        path: /tmp/samba_cephfs_config
+        type: DirectoryOrCreate
+    - name: workspace
+      hostPath:
+        path: ../
+        type: Directory
+  containers:
+    - name: cephfs
+      image: quay.io/spuiuk/samba_cephfs:cephfs
+      ports:
+      - containerPort: 6789
+      - containerPort: 6800
+      - containerPort: 6801
+      - containerPort: 6802
+      - containerPort: 6803
+      - containerPort: 6804
+      - containerPort: 6805
+      - containerPort: 6806
+      - containerPort: 6807
+      - containerPort: 6808
+      - containerPort: 6809
+      - containerPort: 6810
+      - containerPort: 6811
+      volumeMounts:
+        - name: config-volume
+          mountPath: /config
+    - name: samba_dev
+      image: quay.io/spuiuk/samba_cephfs:samba_dev
+      ports:
+      - containerPort: 445
+      volumeMounts:
+        - name: config-volume
+          mountPath: /config
+        - name: workspace
+          mountPath: /workspaces/samba_cephfs
+      securityContext:
+        privileged: true
+
+
