@@ -3,13 +3,11 @@ then
 	dnf remove -y samba
 fi
 
+mkdir /mycluster 2>/dev/null
 umount -fl /ceph-fuse
-/cephfs_start.sh
-
-if ! ps -fax|grep ceph-mds|grep -v grep
-then
-	ceph-mds --id 'a'
-fi
+ceph-fuse /mnt-cephfs
+volume_path=`find /mnt-cephfs/|grep _nogroup/samba/|grep -v .meta`
+ln -sf ${volume_path} /cephfs-fuse
 
 if [ -a /workspaces/samba_cephfs/others/smb.conf ]
 then
