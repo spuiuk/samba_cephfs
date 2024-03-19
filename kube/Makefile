@@ -17,7 +17,7 @@ clean_images:
 	-podman rmi quay.io/spuiuk/samba_cephfs:samba_dev quay.io/spuiuk/samba_cephfs:cephfs
 
 samba_dev:
-	podman exec -it samba-cephfs-samba_dev bash
+	podman exec -w /root -it samba-cephfs-samba_dev bash
 
 cephfs:
 	podman exec -it samba-cephfs-cephfs bash
