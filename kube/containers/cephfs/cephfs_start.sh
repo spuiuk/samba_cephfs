@@ -11,7 +11,7 @@ mkdir /config/ceph
 ln -s /config/ceph /etc/ceph
 
 cd /
-sh /micro-osd.sh mycluster
+sh /micro-osd.sh /mycluster
 
 cp -f /mycluster/ceph.conf /etc/ceph/ceph.conf
 
