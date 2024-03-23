@@ -7,9 +7,8 @@ start:
 stop:
 	make -C ./kube/ down
 
-exec_samba:
+exec:
 	make -C ./kube/ samba_dev
-	podman exec -w /root -it samba_cepfs_dev /bin/bash
 
 clean_images:
 	make -C ./kube/ clean_images
