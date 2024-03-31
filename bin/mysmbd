@@ -8,7 +8,7 @@ umount -fl /ceph-fuse
 ceph-fuse /mnt-cephfs
 
 rm -f /cephfs-fuse
-volume_path=`find /mnt-cephfs/volumes/_nogroup/samba/[0-9]* -maxdepth 0`
+volume_path=`find /mnt-cephfs/volumes/_nogroup/samba/[a-z0-9]* -maxdepth 0`
 ln -s ${volume_path} /cephfs-fuse
 
 if [ -a /workspaces/samba_cephfs/others/smb.conf ]
