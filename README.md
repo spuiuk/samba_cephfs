@@ -12,9 +12,14 @@ git clone the samba source repository in the root of this repository. This is wh
 # git clone git@gitlab.com:samba-team/samba.git 
 ```
 
-To run the container, 
+To run the containers, 
 ```
-# make run
+# make start
+```
+
+To stop the containers, 
+```
+# make stop
 ```
 
 To attach to the running container
