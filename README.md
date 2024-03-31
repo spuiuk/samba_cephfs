@@ -27,6 +27,12 @@ To attach to the running container
 # make exec
 ```
 
+To run  a tcpdump 
+```
+make tcpdump
+```
+The command will install tcpdump in the samba container and will generate the tcpdump into /config/out.pcap which is mapped into /tmp/samba_cephfs_config/out.pcap in the host machine. It will also run wireshar on the pcap file once the tcpdump is stopped with a Ctrl-c.
+
 
 Within the container, the following helper scripts are available
 mycomnfigure - configures the samba sources and gets them ready to build
