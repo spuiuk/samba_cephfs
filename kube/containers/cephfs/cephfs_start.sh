@@ -13,6 +13,9 @@ ln -s /config/ceph /etc/ceph
 cd /
 sh /micro-osd.sh /mycluster
 
+# Allow sufficient time for cephfs to come up
+sleep 10
+
 cp -f /mycluster/ceph.conf /etc/ceph/ceph.conf
 
 # Create subvolume and wait for it to be ready
@@ -26,12 +29,12 @@ VOLPATH=$(ceph fs subvolume getpath cephfs samba)
 cat >/config/ceph/cephfs-samba.conf <<EOF
 [cephfs-vfs]
 path = ${VOLPATH}
-vfs objects = ceph
+vfs objects = acl_xattr ceph
 ceph: config_file = /etc/ceph/ceph.conf
 ceph: user_id = samba.gw
+browseable = yes
 read only = no
-oplocks = no
-kernel share modes = no
+acl_xattr:ignore system acls = yes
 EOF
 
 
