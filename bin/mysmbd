@@ -23,6 +23,10 @@ then
 	myinstall
 fi
 cp -f /root/samba/bin/default/source3/modules/libvfs_module_ceph.so /usr/lib64/samba/vfs/ceph.so
+if [ -a /root/samba/bin/default/source3/modules/libvfs_module_ceph2.so ]
+then
+	cp -f /root/samba/bin/default/source3/modules/libvfs_module_ceph2.so /usr/lib64/samba/vfs/ceph2.so
+fi
 
 cp -f /root/samba/bin/smbtorture /usr/bin/smbtorture
 
