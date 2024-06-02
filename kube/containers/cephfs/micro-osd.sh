@@ -22,7 +22,7 @@ set -u
 DIR=${1}
 
 # reset
-pkill ceph || true
+pkill "ceph-" || true
 rm -rf "${DIR:?}"/*
 LOG_DIR="${DIR}/log"
 MON_DATA="${DIR}/mon"
