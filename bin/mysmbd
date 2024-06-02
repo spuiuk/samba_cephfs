@@ -4,8 +4,10 @@ then
 fi
 
 mkdir /mycluster 2>/dev/null
-umount -fl /ceph-fuse
-ceph-fuse /mnt-cephfs
+if ! mount|grep "ceph-fuse on /mnt-cephfs"
+then
+	ceph-fuse /mnt-cephfs
+fi
 
 rm -f /cephfs-fuse
 volume_path=`find /mnt-cephfs/volumes/_nogroup/samba/[a-z0-9]* -maxdepth 0`
@@ -21,6 +23,7 @@ then
 	myinstall
 fi
 cp -f /root/samba/bin/default/source3/modules/libvfs_module_ceph.so /usr/lib64/samba/vfs/ceph.so
+
 cp -f /root/samba/bin/smbtorture /usr/bin/smbtorture
 
 smbd -F --debug-stdout --no-process-group |tee /var/log/samba/log
