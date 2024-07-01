@@ -2,7 +2,8 @@
 ENV	REFRESHED_AT 2024-03-06:01
 FROM 	quay.io/centos/centos:stream9
 
-RUN	dnf install -y centos-release-ceph-reef.noarch
+RUN	dnf install -y centos-release-ceph-reef.noarch 'dnf-command(config-manager)'
+RUN	dnf update -y
 RUN 	dnf install -y glibc-langpack-en iputils iproute iptables vim autofs rsync psmisc wget cifs-utils nfs-utils glibc-all-langpacks
 RUN	dnf install -y git gdb gcc perl automake autoconf libtool flex bison strace
 
