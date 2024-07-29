@@ -22,6 +22,9 @@ samba_dev:
 cephfs:
 	podman exec -it samba-cephfs-cephfs bash
 
+restart_cephfs:
+	podman restart  samba-cephfs-cephfs
+
 tcpdump:
 	-podman exec -it samba-cephfs-samba_dev dnf install -y tcpdump
 	podman exec -it samba-cephfs-samba_dev tcpdump -i lo -w /config/out.pcap -s0
