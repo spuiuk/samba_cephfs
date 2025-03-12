@@ -43,4 +43,6 @@ RUN	dnf install -y ceph-fuse
 RUN	rm -rf /etc/ceph && ln -sf /config/ceph /etc/ceph
 RUN	mkdir /mnt-cephfs; chmod 777 /mnt-cephfs
 
+RUN	cd /etc/yum.repos.d/ && wget https://artifacts.ci.centos.org/samba/pkgs/master/centos/samba-nightly-master.repo
+
 CMD	while :; do sleep 1000; done
