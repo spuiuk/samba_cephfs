@@ -29,9 +29,9 @@ VOLPATH=$(ceph fs subvolume getpath cephfs samba)
 cat >/config/ceph/cephfs-samba.conf <<EOF
 [cephfs-vfs]
 path = ${VOLPATH}
-vfs objects = acl_xattr ceph
-ceph: config_file = /etc/ceph/ceph.conf
-ceph: user_id = samba.gw
+vfs objects = acl_xattr ceph_new
+ceph_new: config_file = /etc/ceph/ceph.conf
+ceph_new: user_id = samba.gw
 browseable = yes
 read only = no
 acl_xattr:ignore system acls = yes
