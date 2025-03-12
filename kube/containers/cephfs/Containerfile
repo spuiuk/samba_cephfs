@@ -1,5 +1,5 @@
-FROM ceph/ceph:v18.2
-ENV REFRESHED_AT 2024-030-18-01:02
+FROM ceph/ceph:v19.2
+ENV REFRESHED_AT 2025-03-12-01
 
 RUN     mkdir /etc/selinux/ && touch /etc/selinux/config
 #RUN 	dnf update -y
