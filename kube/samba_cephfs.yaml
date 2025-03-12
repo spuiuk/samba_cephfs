@@ -45,5 +45,7 @@ spec:
           mountPath: /workspaces/samba_cephfs
       securityContext:
         privileged: true
+        capabilities:
+          add: ["READ_SEARCH"]
 
 
